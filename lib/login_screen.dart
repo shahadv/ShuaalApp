@@ -14,6 +14,9 @@ class StartState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return initWidget();
   }
+final _formKey=GlobalKey<FormState>();
+  final TextEditingController emailController=new TextEditingController();
+  final TextEditingController passwordController=new TextEditingController();
 
   initWidget() {
     return Scaffold(
@@ -78,6 +81,11 @@ class StartState extends State<LoginScreen> {
                       ],
                     ),
                     child: TextField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      onSubmitted: (String value){
+                         emailController.text=value;
+                      },
                       cursorColor: Color(0xffF5591F),
                       decoration: InputDecoration(
                         icon: Icon(
@@ -89,6 +97,8 @@ class StartState extends State<LoginScreen> {
                         focusedBorder: InputBorder.none,
                       ),
                     ),
+
+
                   ),
 
                   Container(
@@ -108,6 +118,11 @@ class StartState extends State<LoginScreen> {
                       ],
                     ),
                     child: TextField(
+                      controller: passwordController,
+                      obscureText: true,
+                      onSubmitted: (String value){
+                        passwordController.text=value;
+                      },
                       cursorColor: Color(0xffF5591F),
                       decoration: InputDecoration(
                         focusColor: Color(0xffF5591F),
